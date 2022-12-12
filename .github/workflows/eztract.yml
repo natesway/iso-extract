@@ -1,0 +1,19 @@
+name: Example Push Action
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: |
+          mkdir iso
+          cd iso    
+          wget https://osrelease.download.prss.microsoft.com/pr/download/Mariner-2.0-x86_64.iso
+          sudo apt-get install p7zip-full p7zip-rar
+          7z x Mariner-2.0-x86_64.iso
+          cd ../
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add --all
+          git commit -m "uploaded"
+          git push
