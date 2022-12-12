@@ -11,10 +11,10 @@ jobs:
           mkdir outputfortext
           isoinfo -i  Mariner-2.0-x86_64.iso -l > outputfortext/Output.txt
 
-     - uses: actions/upload-artifact@v3
-       with:
-        name: output
-        path: outputfortext/
+      - uses: actions/upload-artifact@v3
+        with:
+          name: output
+          path: outputfortext/
 
 
 
